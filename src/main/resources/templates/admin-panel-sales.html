@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel Sales</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+<div class="container">
+    <h2>Admin Panel Sales</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Contact</th>
+            <th>Website</th>
+            <th>Status</th>
+            <th>Price</th>
+            <th>Notes</th>
+            <th>Document</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sale : ${sales}">
+            <td th:text="${sale.applicationDate}"></td>
+            <td th:text="${sale.clientContact}"></td>
+            <td th:text="${sale.websiteName}"></td>
+            <td th:classappend="${sale.statusCssClass}" th:text="${sale.status}"></td>
+            <td th:text="${sale.price}"></td>
+            <td th:text="${sale.notes}"></td>
+            <td><a th:href="${sale.documentUrl}" th:if="${sale.documentUrl != null}">Download</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="form-container">
+    <form th:action="@{/admin-panel-sales}" method="post">
+        <label for="applicationDate">Date:</label>
+        <input type="date" id="applicationDate" name="applicationDate" required>
+
+        <label for="clientContact">Contact:</label>
+        <input type="text" id="clientContact" name="clientContact" required>
+
+        <label for="websiteName">Website:</label>
+        <input type="text" id="websiteName" name="websiteName" required>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="IN_PROGRESS">In Progress</option>
+            <option value="CLOSED">Closed</option>
+            <option value="CANCELED">Canceled</option>
+        </select>
+
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required>
+
+        <label for="notes">Notes:</label>
+        <textarea id="notes" name="notes"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<tr th:each="sale : ${sales}">
+    <!-- Остальные ячейки таблицы -->
+    <td>
+        <form th:action="@{/admin-panel-sales/update}" method="post">
+            <input type="hidden" name="id" th:value="${sale.id}"/>
+            <button type="submit">Update</button>
+        </form>
+    </td>
+    <td>
+        <form th:action="@{/admin-panel-sales/delete}" method="post">
+            <input type="hidden" name="id" th:value="${sale.id}"/>
+            <button type="submit">Delete</button>
+        </form>
+    </td>
+</tr>
+
+</body>
+</html>

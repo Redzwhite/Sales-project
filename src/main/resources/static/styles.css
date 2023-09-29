@@ -1,0 +1,11 @@
+.status-in-progress {
+    color: blue;
+}
+
+.status-closed {
+    color: green;
+}
+
+.status-canceled {
+    color: red;
+}
