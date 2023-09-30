@@ -17,6 +17,18 @@
         <java.version>17</java.version>
     </properties>
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-mysql -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-mysql</artifactId>
+            <version>9.22.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>9.22.2</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
         <dependency>
             <groupId>commons-fileupload</groupId>
