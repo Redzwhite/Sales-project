@@ -16,3 +16,12 @@ Password for connecting to the database.
 
 ### `DB_NAME`
 The name of the database that the application will use.
+
+## Example `.env` Configuration:
+```env
+export DB_HOST="jdbc:mysql://localhost"
+export DB_PORT="*****"
+export DB_USER="*****"
+export DB_PASSWORD="*****"
+export DB_NAME="*****"
+export APP_PORT="*****"
