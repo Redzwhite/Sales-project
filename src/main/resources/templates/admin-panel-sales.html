@@ -6,6 +6,11 @@
     <link rel="stylesheet" th:href="@{/styles.css}"/>
 </head>
 <body>
+<div>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Logout" class="btn btn-danger">
+    </form>
+</div>
 <div class="container">
     <h2>Admin Panel Sales</h2>
     <table>
