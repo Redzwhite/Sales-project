@@ -1,6 +1,6 @@
 package com.example.datingadmintracker.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
@@ -15,13 +15,37 @@ public class AdminPanelSale {
 
     @CreationTimestamp
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "application_date", nullable = false, updatable = false)
-    private Date applicationDate;
+    @Column(name = "start_date", nullable = false, updatable = false)
+    private Date startDate;
 
-    @Column(name = "client_contact", nullable = false)
+    @CreationTimestamp
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "end_date", nullable = true, updatable = false)
+    private Date endDate;
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    @Column(name = "client_contact", nullable = false, length = 500)
     private String clientContact;
 
-    @Column(name = "website_name", nullable = false)
+    @Column(name = "client_identifier_id", nullable = true, length = 100)
+    private String clientId;
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    @Column(name = "website_name", nullable = false, length = 500)
     private String websiteName;
 
     @Enumerated(EnumType.STRING)
@@ -31,10 +55,10 @@ public class AdminPanelSale {
     @Column(name = "price", nullable = false)
     private Double price;
 
-    @Column(name = "notes")
+    @Column(name = "notes", length = 50000)
     private String notes;
 
-    @Column(name = "document_url")
+    @Column(name = "document_url", length = 8000)
     private String documentUrl;
 
     public Long getId() {
@@ -45,12 +69,12 @@ public class AdminPanelSale {
         this.id = id;
     }
 
-    public Date getApplicationDate() {
-        return applicationDate;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setApplicationDate(Date applicationDate) {
-        this.applicationDate = applicationDate;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
     public String getClientContact() {
@@ -132,4 +156,5 @@ enum Status {
 
 
 }
+
 

@@ -27,8 +27,10 @@
         </thead>
         <tbody>
         <tr th:each="sale : ${sales}">
-            <td th:text="${sale.applicationDate}"></td>
+            <td th:text="${sale.startDate}"></td>
+            <td th:text="${sale.endDate}"></td>
             <td th:text="${sale.clientContact}"></td>
+            <td th:text="${sale.}"></td>
             <td th:text="${sale.websiteName}"></td>
             <td th:classappend="${sale.statusCssClass}" th:text="${sale.status}"></td>
             <td th:text="${sale.price}"></td>
@@ -52,8 +54,8 @@
 </div>
 <div class="form-container">
     <form th:action="@{/admin-panel-sales}" method="post">
-        <label for="applicationDate">Date:</label>
-        <input type="date" id="applicationDate" name="applicationDate" required>
+        <label for="startDate">Date:</label>
+        <input type="date" id="startDate" name="startDate" required>
 
         <label for="clientContact">Contact:</label>
         <input type="text" id="clientContact" name="clientContact" required>
